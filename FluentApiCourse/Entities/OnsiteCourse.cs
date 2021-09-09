@@ -6,7 +6,11 @@
 
         public OnsiteCourse()
         {
-            Details = new Details();
+        }
+
+        public OnsiteCourse(Details details)
+        {
+            Details = details;
         }
     }
 }

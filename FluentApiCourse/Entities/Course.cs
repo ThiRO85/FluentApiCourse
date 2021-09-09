@@ -9,11 +9,19 @@ namespace FluentApiCourse.Entities
         public int Credits { get; set; }
         public int DepartmentID { get; set; } //Foreign key
         public virtual Department Department { get; set; } //Navigation property
-        public virtual ICollection<Instructor> Instructors { get; private set; } //Navigation property
+        public virtual ICollection<Instructor> Instructors { get; private set; } = new List<Instructor>(); //Navigation property
 
         public Course()
         {
-            this.Instructors = new HashSet<Instructor>();
+        }
+
+        public Course(int courseID, string title, int credits, int departmentID, Department department)
+        {
+            CourseID = courseID;
+            Title = title;
+            Credits = credits;
+            DepartmentID = departmentID;
+            Department = department;
         }
     }
 }
