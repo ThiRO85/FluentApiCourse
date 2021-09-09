@@ -19,9 +19,13 @@ namespace FluentApiCourse.Contexts
         public DbSet<OnlineCourse> OnlineCourses { get; set; }
         public DbSet<OnsiteCourse> OnsiteCourses { get; set; }
 
-        public async Task<int> SaveChanges()
+        /*public async Task<int> SaveChanges()
         {
             return await base.SaveChangesAsync();
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+        }*/
     }
 }

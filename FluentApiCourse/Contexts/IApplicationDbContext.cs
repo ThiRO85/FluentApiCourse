@@ -14,6 +14,6 @@ namespace FluentApiCourse.Contexts
         DbSet<OnlineCourse> OnlineCourses { get; set; }
         DbSet<OnsiteCourse> OnsiteCourses { get; set; }
 
-        Task<int> SaveChanges();
+        //Task<int> SaveChanges();
     }
 }

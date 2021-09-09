@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FluentApiCourse.Entities
 {
@@ -9,7 +10,8 @@ namespace FluentApiCourse.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime HireDate { get; set; }
-        public ICollection<Course> Courses { get; private set; }
+        [NotMapped]
+        public virtual ICollection<Course> Courses { get; private set; }
 
         public Instructor()
         {
