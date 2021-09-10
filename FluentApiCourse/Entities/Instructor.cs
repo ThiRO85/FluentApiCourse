@@ -6,11 +6,12 @@ namespace FluentApiCourse.Entities
 {
     public class Instructor
     {
-        public int Id { get; set; } //Primary key
+        //public int InstructorID { get; set; } //Primary key
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime HireDate { get; set; }
-        //[NotMapped]
+        [NotMapped]
         public virtual ICollection<Course> Courses { get; private set; } = new List<Course>();
 
         public Instructor()

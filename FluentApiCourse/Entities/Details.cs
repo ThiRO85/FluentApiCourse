@@ -4,7 +4,8 @@ namespace FluentApiCourse.Entities
 {
     public class Details
     {
-        public int DetailsID { get; set; }
+        //public int DetailsID { get; set; }
+        public int Id { get; set; }
         public DateTime Time { get; set; }
         public string Location { get; set; }
         public string Days { get; set; }
@@ -15,7 +16,7 @@ namespace FluentApiCourse.Entities
 
         public Details(int detailsID, DateTime time, string location, string days)
         {
-            DetailsID = detailsID;
+            Id = detailsID;
             Time = time;
             Location = location;
             Days = days;

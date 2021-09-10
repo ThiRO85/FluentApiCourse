@@ -4,14 +4,16 @@ using FluentApiCourse.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FluentApiCourse.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210909195339_Testing")]
+    partial class Testing
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,7 +23,7 @@ namespace FluentApiCourse.Migrations
 
             modelBuilder.Entity("FluentApiCourse.Entities.Course", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("CourseID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -39,7 +41,7 @@ namespace FluentApiCourse.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("CourseID");
 
                     b.HasIndex("DepartmentID");
 
@@ -74,7 +76,7 @@ namespace FluentApiCourse.Migrations
 
             modelBuilder.Entity("FluentApiCourse.Entities.Details", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("DetailsID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -88,7 +90,7 @@ namespace FluentApiCourse.Migrations
                     b.Property<DateTime>("Time")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                    b.HasKey("DetailsID");
 
                     b.ToTable("Details");
                 });
@@ -109,17 +111,17 @@ namespace FluentApiCourse.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("OnlineCourseId")
+                    b.Property<int?>("OnlineCourseCourseID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("OnsiteCourseId")
+                    b.Property<int?>("OnsiteCourseCourseID")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OnlineCourseId");
+                    b.HasIndex("OnlineCourseCourseID");
 
-                    b.HasIndex("OnsiteCourseId");
+                    b.HasIndex("OnsiteCourseCourseID");
 
                     b.ToTable("Instructors");
                 });
@@ -158,10 +160,10 @@ namespace FluentApiCourse.Migrations
                 {
                     b.HasBaseType("FluentApiCourse.Entities.Course");
 
-                    b.Property<int?>("DetailsId")
+                    b.Property<int?>("DetailsID")
                         .HasColumnType("int");
 
-                    b.HasIndex("DetailsId");
+                    b.HasIndex("DetailsID");
 
                     b.HasDiscriminator().HasValue("OnsiteCourse");
                 });
@@ -179,11 +181,11 @@ namespace FluentApiCourse.Migrations
                 {
                     b.HasOne("FluentApiCourse.Entities.OnlineCourse", null)
                         .WithMany("Instructors")
-                        .HasForeignKey("OnlineCourseId");
+                        .HasForeignKey("OnlineCourseCourseID");
 
                     b.HasOne("FluentApiCourse.Entities.OnsiteCourse", null)
                         .WithMany("Instructors")
-                        .HasForeignKey("OnsiteCourseId");
+                        .HasForeignKey("OnsiteCourseCourseID");
                 });
 
             modelBuilder.Entity("FluentApiCourse.Entities.OfficeAsignment", b =>
@@ -197,7 +199,7 @@ namespace FluentApiCourse.Migrations
                 {
                     b.HasOne("FluentApiCourse.Entities.Details", "Details")
                         .WithMany()
-                        .HasForeignKey("DetailsId");
+                        .HasForeignKey("DetailsID");
                 });
 #pragma warning restore 612, 618
         }

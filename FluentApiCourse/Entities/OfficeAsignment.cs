@@ -7,6 +7,7 @@ namespace FluentApiCourse.Entities
     {
         //[Key()]
         //public Int32 InstructorID { get; set; } //Specifying InstructorID as a primary
+        //public int OfficeAsignmentID { get; set; }
         public int Id { get; set; }
         public string Location { get; set; }
 

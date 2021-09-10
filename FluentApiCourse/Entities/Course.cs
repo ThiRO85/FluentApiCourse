@@ -4,7 +4,8 @@ namespace FluentApiCourse.Entities
 {
     public class Course
     {
-        public int CourseID { get; set; } //Primary key
+        //public int CourseID { get; set; } //Primary key
+        public int Id { get; set; }
         public string Title { get; set; }
         public int Credits { get; set; }
         public int DepartmentID { get; set; } //Foreign key
@@ -17,7 +18,7 @@ namespace FluentApiCourse.Entities
 
         public Course(int courseID, string title, int credits, int departmentID, Department department)
         {
-            CourseID = courseID;
+            Id = courseID;
             Title = title;
             Credits = credits;
             DepartmentID = departmentID;
